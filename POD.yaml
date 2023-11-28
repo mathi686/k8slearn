@@ -1,0 +1,29 @@
+ApiVersion: v1
+kind: Pod
+metadata:
+  name: nginix-pd-demo
+  labeles:
+    app: nginix
+    env: dev
+  spec:
+    container:
+     - name: demo-container
+      image: nginix:latest
+      ports:
+        name: container-port
+        port: 80
+        protocolo: TCP
+      env:
+        name: "nginix"
+        user: admin
+    resources:
+      limits:
+        cpu: "500m"
+        memory: "500MI"
+      requests:
+        cpu: "250m"
+        memory: "250mi"
+  volumemounts:
+    - name: nsinix-data
+      mountpath: /var/www/html
+
