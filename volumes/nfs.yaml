@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: write-container
-      image: ubutnu
+      image: apline
       command: ["sh", "-c"]
       args: ["while true; do date >> /var/log/index.html; sleep 10; done"]
       volumeMounts:
