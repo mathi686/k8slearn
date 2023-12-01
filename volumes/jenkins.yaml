@@ -27,3 +27,16 @@ spec:
           nfs:
             server: 192.168.147.129
             path: /var/tmp/nfsshared
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-nodeport
+spec:
+  selector:
+    app: temp-jenkins
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: NodePort
