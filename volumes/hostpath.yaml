@@ -13,7 +13,9 @@ spec:
       args: ["-c", "while true;do date >> /var/log/index.html; sleep 10;done"]
       volumeMounts:
         - name: shareddata
+        - name: newdata
           mountPath: /var/log
+          mountPath: /var/log/new.txt
     - name: serving-container
       image: nginx:latest
       ports:
@@ -24,6 +26,8 @@ spec:
   volumes:
     - name: shareddata
       hostPath:
+        path: /var/tmp/new.txt
+        type: FileOrcreate
         path: /var/tmp/hostpathvolume
         type: DirectoryOrcreate
 
