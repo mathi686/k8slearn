@@ -9,8 +9,8 @@ spec:
   containers:
     - name: write-container
       image: alpine
-      command: ["bin/sh"]
-      args: ["-c", "while true;do date >> /var/log/index.html; sleep 10;done"]
+      command: ["sh", "-c"]
+      args: ["while true; do date >> /var/log/index.html; sleep 10; done"]
       volumeMounts:
         - name: shareddata
           mountPath: /var/log
@@ -27,13 +27,8 @@ spec:
     - name: shareddata
       hostPath:
         path: /var/tmp/hostpathvolume
-        type: DirectoryOrcreate
-    - name: shareddata
+        type: DirectoryOrCreate
+    - name: newdata
       hostPath:
         path: /var/tmp/new.txt
-        type: FileOrcreate
-
-
-
-
-
+        type: FileOrCreate
