@@ -20,11 +20,10 @@ spec:
           - name: cicd-master
             containerPort: 8080
         volumeMounts:
-           - name: jenkins-data
-             mountPath: /var/jenkins_home
-  volumes:
-    - name: shared-data
-      nfs:
-        server: 192.168.147.129
-        path: /var/tmp/nfsshared
-
+          - name: jenkins-data  # Corrected volume name
+            mountPath: /var/jenkins_home
+      volumes:  # Corrected indentation
+        - name: jenkins-data  # Corrected volume name
+          nfs:
+            server: 192.168.147.129
+            path: /var/tmp/nfsshared
